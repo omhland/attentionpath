@@ -1,0 +1,66 @@
+### 
+#Command timing overview 
+### 
+
+ 
+####Command 0: Plan_the_day 
+#Timing_data
+period_length=1
+timing=first
+last_boot=2021-08-23
+num_boots_today=1
+next_launch=Tue Aug 24 00:00:00 2021
+
+ 
+####Command 1: Freedom_and_messages 
+#Timing_data
+period_length=1
+timing=first
+last_boot=2021-08-23
+num_boots_today=1
+next_launch=Tue Aug 24 00:00:00 2021
+
+ 
+####Command 2: Work 
+#Timing_data
+period_length=1
+timing=every
+last_boot=2021-08-23
+num_boots_today=1
+next_launch=Mon Aug 23 00:00:00 2021
+
+ 
+####Command 3: End_of_day 
+#Timing_data
+period_length=1
+timing=every
+last_boot=2021-08-23
+num_boots_today=1
+next_launch=Mon Aug 23 00:00:00 2021
+
+ 
+####Command 4: Review 
+#Timing_data
+period_length=7
+timing=first
+last_boot=2021-08-22
+num_boots_today=0
+next_launch=Sun Aug 29 00:00:00 2021
+
+ 
+####Command 5: Typing 
+#Timing_data
+period_length=1
+timing=every
+last_boot=2021-08-23
+num_boots_today=1
+next_launch=Mon Aug 23 00:00:00 2021
+
+ 
+####Command 6: banking 
+#Timing_data
+period_length=7
+timing=first
+last_boot=2021-08-22
+num_boots_today=0
+next_launch=Sun Aug 29 00:00:00 2021

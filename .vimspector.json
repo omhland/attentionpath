@@ -1,0 +1,33 @@
+{
+  "configurations": {
+    "<name>: Launch": {
+      "adapter": "debugpy",
+      "configuration": {
+        "name": "Launch",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${cwd}",
+        "python": "/usr/bin/python",
+        "stopOnEntry": true,
+        "console": "internalConsole",
+        "debugOptions": [],
+        "program": "${cwd}/main.py",
+	"justMyCode": false
+      }
+    },
+    "Launch_2": {
+      "adapter": "debugpy",
+      "configuration": {
+        "name": "Launch",
+        "type": "python",
+        "request": "launch",
+        "cwd": "${cwd}",
+        "python": "/usr/bin/python",
+        "stopOnEntry": true,
+        "console": "internalConsole",
+        "debugOptions": [],
+        "program": "${cwd}/editor.py"
+      }
+    }
+  }
+}

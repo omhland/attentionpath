@@ -1,0 +1,82 @@
+### 
+#Commands overview Mon Aug 23 16:54:21 2021 
+### 
+
+ 
+####Command 0: Plan_the_day 
+#Command data
+command_procedures=[ 
+   "google-chrome-stable --args --new-window https://todoist.com/app/project/2269572090",
+   "google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r",
+]
+ws_num=10
+ws_focus=True
+ws_name=Plan_the_day
+
+ 
+####Command 1: Freedom_and_messages 
+#Command data
+command_procedures=[ 
+   "google-chrome-stable --args --new-window https://freedom.to/dashboard",
+   "google-chrome-stable --args --new-window gmail.com messenger.com hotmail.com",
+]
+ws_num=9
+ws_focus=False
+ws_name=Freedom_and_messages
+
+ 
+####Command 2: Work 
+#Command data
+command_procedures=[ 
+   "flatpak run com.toggl.TogglDesktop",
+   "google-chrome-stable --args --new-window https://todoist.com/app/filter/2318047973",
+   "google-chrome-stable --args --new-window https://freedom.to/dashboard",
+]
+ws_num=1
+ws_focus=False
+ws_name=Work
+
+ 
+####Command 3: End_of_day 
+#Command data
+command_procedures=[ 
+   "google-chrome-stable --args --new-window https://track.toggl.com/reports/summary/4998663",
+   "google-chrome-stable --args --new-window https://todoist.com/app/filter/23182994947",
+   "gnome-terminal -x vim ~/Documents/msg/daily.text",
+]
+ws_num=0
+ws_focus=0
+ws_name=End_of_day
+
+ 
+####Command 4: Review 
+#Command data
+command_procedures=[ 
+   "google-chrome-stable --args --new-window https://track.toggl.com/reports/summary/4998663",
+   "google-chrome-stable --args --new-window https://todoist.com/app/filter/2318400496,
+]
+ws_num=15
+ws_focus=True
+ws_name=Review
+
+ 
+####Command 5: Typing 
+#Command data
+command_procedures=[ 
+   "google-chrome-stable --args --new-window keybr.com wwwtyro.github.io/keyzen/",
+]
+ws_num=2
+ws_focus=0
+ws_name=Typing
+
+ 
+####Command 6: banking 
+#Command data
+command_procedures=[ 
+   "google-chrome-stable --args --new-window https://pandas.pydata.org/docs/index.html",
+   "libreoffice Documents/fincances/budget.xlsx",
+   "google-chrome-stable --args --new-window dnb.no",
+]
+ws_num=11
+ws_focus=1
+ws_name=banking
