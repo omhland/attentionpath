@@ -1,5 +1,8 @@
 # attentionpath
 
+Investigate systemd
+
+
 # New requirements
 1. The ability to edit the start up procedure using a text file
 1. Make a more structured deep work setup
