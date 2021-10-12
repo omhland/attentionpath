@@ -1,7 +1,9 @@
 # attentionpath
 
-Investigate systemd
+Features:
 
+Investigate systemd
+MR calendar path
 
 # New requirements
 1. The ability to edit the start up procedure using a text file
