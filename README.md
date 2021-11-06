@@ -4,6 +4,10 @@ Features:
 
 Investigate systemd
 MR calendar path
+Make trello put up automatically
+
+Make Gmail pup up every other day, or something like that
+
 
 # New requirements
 1. The ability to edit the start up procedure using a text file
