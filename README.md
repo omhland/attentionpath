@@ -2,14 +2,14 @@
 
 ## Installation
 
-`attentionpath` is light and simple – it only require that you have *bash*, *python3* and *i3* installed. The installation comparably simple. Simply follow these 2 steps:
+`attentionpath` is light and simple – it only requires that you have *bash*, *python3* and *i3* installed. Happily, the installation is also straightforward. Follow these 2 steps:
 
-### Clone the repo
+1. Clone the repo
 ```
 cd ~/.config/
 git clone https://github.com/omhland/attentionpath
 ```
-### Configuring i3
+2. Configuring i3
 
 Place the fowllowing snippet into your i3 `config` file. 
 ```
