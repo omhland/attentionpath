@@ -1,1 +1,0 @@
-Command documentcommand_procuders"google-chrome-stable --args --new-window https://todoist.com/app/project/2269572090""google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r"ws_num=10ws_focus=Trueworkspace_name=Plan_the_day

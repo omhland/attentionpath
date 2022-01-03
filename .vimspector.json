@@ -4,10 +4,10 @@
       "adapter": "debugpy",
       "configuration": {
         "name": "Launch",
-        "type": "python",
+        "type": "python3",
         "request": "launch",
         "cwd": "${cwd}",
-        "python": "/usr/bin/python",
+        "python": "/usr/bin/python3",
         "stopOnEntry": true,
         "console": "internalConsole",
         "debugOptions": [],
@@ -19,14 +19,28 @@
       "adapter": "debugpy",
       "configuration": {
         "name": "Launch",
-        "type": "python",
+        "type": "python3",
         "request": "launch",
         "cwd": "${cwd}",
-        "python": "/usr/bin/python",
+        "python": "/usr/bin/python3",
         "stopOnEntry": true,
         "console": "internalConsole",
         "debugOptions": [],
         "program": "${cwd}/editor.py"
+      }
+    },
+    "Text": {
+      "adapter": "debugpy",
+      "configuration": {
+        "name": "Launch",
+        "type": "python3",
+        "request": "launch",
+        "cwd": "${cwd}",
+        "python": "/usr/bin/python3",
+        "stopOnEntry": true,
+        "console": "internalConsole",
+        "debugOptions": [],
+        "program": "${cwd}/config_reader.py"
       }
     }
   }

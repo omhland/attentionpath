@@ -1,0 +1,37 @@
+" Please use the following config file as a source of inspiration
+
+=1, 2
+{
+# Work panel
+: work_panel
++ 1
+@ monday, tuesday, wednesday, thursday, friday
+-flatpak run com.toggl.TogglDesktop
+-google-chrome-stable --args --new-window https://freedom.to/dashboard https://www.youtube.com
+-gnome-control-center
+-obs
+}
+
+
+{
++ 2
+# Personal
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday
+-google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r
+-google-chrome-stable --args --new-window https://todoist.com/app/filter/2321126496
+}
+
+{
+# AttentionPath 
++ 3
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday
+-gnome-terminal -x vim ~/.config/attentionPath/config
+}
+
+
+{
+# Typing
++ 4
+@ monday, tuesday, wednesday, thursday, friday
+-google-chrome-stable --args --new-window http://wwwtyro.github.io/keyzen/
+}
