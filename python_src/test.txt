@@ -1,0 +1,26 @@
+#This script was updated Tue Jun 21 10:50:30 2022 
+
+
+#Assembling workspace named Work panel
+i3-msg 'workspace 1:Work panel; append_layout /home/ole/prog_misc/attentionPath/python_src/../layouts/work_panel.json; '
+i3-msg 'workspace 1:Work panel; exec flatpak run com.toggl.TogglDesktop; '
+i3-msg 'workspace 1:Work panel; exec google-chrome-stable --args --new-window https://freedom.to/dashboard https://www.youtube.com; '
+i3-msg 'workspace 1:Work panel; exec gnome-control-center; '
+i3-msg 'workspace 1:Work panel; exec obs; '
+sleep 1.2
+
+#Assembling workspace named Personal
+i3-msg 'workspace 2:Personal; exec google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r; '
+i3-msg 'workspace 2:Personal; exec google-chrome-stable --args --new-window https://todoist.com/app/filter/2321126496; '
+sleep 1.2
+
+#Assembling workspace named AttentionPath
+i3-msg 'workspace 3:AttentionPath; exec gnome-terminal -x vim ~/.config/attentionPath/config; '
+sleep 1.2
+
+#Assembling workspace named Typing
+i3-msg 'workspace 4:Typing; exec google-chrome-stable --args --new-window http://wwwtyro.github.io/keyzen/; '
+sleep 1.2
+#Set fouces 
+sleep 0.5
+i3-msg 'workspace 1:Work panel; '
