@@ -1,11 +1,12 @@
 " Please use the following config file as a source of inspiration
 
 =1, 2
+
 {
 # Work panel
 : work_panel.json
 + 1
-@ monday, tuesday, wednesday, thursday, friday
+@ monday, tuesday, wednesday, thursday, friday & 07:00-15:00
 -flatpak run com.toggl.TogglDesktop
 -google-chrome-stable --args --new-window https://freedom.to/dashboard https://www.youtube.com
 -gnome-control-center

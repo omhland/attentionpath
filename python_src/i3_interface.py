@@ -3,7 +3,7 @@ def i3_workspace_string(workspace):
     ws = "workspace " + workspace.number.__str__() + ":" + workspace.title
     return ws
 
-def i3_set_focus(workspace):
+def i3_set_focus():
     workspace_string = i3_workspace_string(workspace)
     return "#Set fouces " + os.linesep + "sleep 0.5" + os.linesep + i3_msg_creator([workspace_string])
 
@@ -42,4 +42,3 @@ def get_workspace_i3_commands(title, number, commands, layout = None,
     command_strings = [string + os.linesep for string in command_strings]
     command_strings.insert(0, os.linesep)
     return command_strings
-

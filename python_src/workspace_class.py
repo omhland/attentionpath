@@ -19,6 +19,8 @@ class workspace:
 
     __workspaces = []
 
+    __focus_que = []
+
     #TODO instances = [] -> init: self.append()
     #  https://stackoverflow.com/questions/12101958/how-to-keep-track-of-class-instances
 
@@ -73,10 +75,10 @@ class workspace:
                 assert c
                 if isinstance(c, str) == False:
                     raise ValueError("command must be a string")
+
+            self.attr["commands"].append(command)
         else:
             raise ValueError("command must be a string or a list")
-
-        self.attr["commands"].append(command)
 
     def __add_number(self, number):
         """ Adds a number to the workspace.
@@ -142,6 +144,7 @@ class workspace:
         else:
             error_msg = f"Illegal key input '{key}'. The key must be one of the following: {self.legal_commands}"
             raise ValueError(error_msg)
+
     def set_timing(self, weekdays, start_hour=None, end_hour=None,
                    start_minute=None, end_minute=None):
         """ Sets the timing of the workspace.
@@ -157,7 +160,6 @@ class workspace:
 
         self.timing = timing_intervals.timing_intervals( weekdays, start_hour,
                                             end_hour, start_minute, end_minute)
-
 
 
     def should_launch(self):
@@ -181,11 +183,56 @@ class workspace:
         """
         return self.attr
 
+    def get_attribute(self, key):
+        """ Returns workspace attribute given by key.
+        """
+        assert isinstance(key, str), "key must be a string"
+        assert key in self.legal_commands, "key must be one of the following: " + str(self.legal_commands)
+        return self.attr[key]
+
+
     @classmethod
     def get_workspaces(cls):
+        """ Returns a list of all workspaces. """
         return cls.__workspaces
 
+    @classmethod
+    def has_focus_que(cls):
+        """ Returns true if the focus queue is not empty. """
+        return len(cls.__focus_que) > 0
 
+    @classmethod
+    def set_focus_que(cls, que):
+        """ Sets the focus queue from the given list 
+            Parameters:
+                que-> list of workspace ids (user defined ints)
+        """
+        assert isinstance(que, list), "focus queue must be a list"
+        for ws_number in que:
+            assert isinstance(ws_number, int), "focus queue must be a list of ints"
+            assert que.count(ws_number) == 1, "focus queue must be a list of unique ints"
+
+        cls.__focus_que = que
+
+    @classmethod
+    def get_launchable_workspaces(cls):
+        """ Returns a list of workspaces that should launch.
+            And the workspace that should be focused.
+        """
+        workspaces = []
+        ws_nums = []
+        for workspace in cls.__workspaces:
+            if workspace.should_launch():
+                workspaces.append(workspace)
+                ws_nums.append(workspace.get_attribute('number'))
+
+        if cls.__focus_que:
+            for ws_number in cls.__focus_que:
+                if ws_number in ws_nums:
+                    return workspaces, ws_number
+
+        e()
+        return workspaces, None
 
 
 

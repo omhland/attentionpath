@@ -1,15 +1,7 @@
-"""
-input _ time hour, minute
+# FIXME BUGS
+# 1. Focus support has not been implemented
 
-create _
 
-TODO Bug: The begining of the test.txt is broken. One comment is lost and the
-begining of the first command is cut
-
-"""
-
-# FIXME BUG the command_strings are come in double pairs. This dosen't make any
-#  sense
 import datetime as dt
 import os
 from math import isnan, nan
@@ -19,6 +11,48 @@ from IPython import embed as e
 import i3_interface as i3
 
 from workspace_class import workspace as w_fix
+
+
+def extract_time_string(input):
+    """
+    Extracts the time string from the input string.
+
+        Parameters:
+            input: a string in the form of "weekday_name_1, weekday_name_2 & HH:MM,HH:MM"
+
+        Output:
+            weekdays: a list of weekdays
+            start_hour: an int that represents the start hour
+            start_minute: an int that represents the start minute
+            end_hour: an int that represents the end hour
+            end_minute: an int that represents the end minute
+    """
+    assert (num_dividers:=input.count("&")) in [0, 1], "Error: The symbol & is not used correctly"
+    has_time = bool(num_dividers)
+
+    if has_time:
+        weekdays_raw_string, time_raw = input.split('&')
+        start_time, end_time = time_raw.split('-')
+
+        start_hour, start_minute = start_time.split(':')
+        end_hour, end_minute = end_time.split(':')
+
+        # Convert the strings to ints
+        start_hour = int(start_hour)
+        start_minute = int(start_minute)
+        end_hour = int(end_hour)
+        end_minute = int(end_minute)
+
+    else:
+        weekdays_raw_string = input
+        start_hour, start_minute = None, None
+        end_hour, end_minute = None, None
+
+    weekdays_raw = weekdays_raw_string.split(',')
+    weekdays = [weekday_raw.strip().lower() for weekday_raw in weekdays_raw]
+
+    return weekdays, start_hour, start_minute, end_hour, end_minute
+
 
 
 class InputReader:
@@ -79,6 +113,13 @@ class InputReader:
         - assigns the command to a new
         input: a command in the form of a string
         """
+        if command == '=':
+            assert not w_fix.has_focus_que(), "Error: The focus queue is defined multiple times in the config."
+
+            focus_que_raw = input.split(',')
+            focus_que = [int(ws_num) for ws_num in focus_que_raw]
+            w_fix.set_focus_que(focus_que)
+
         if command == '}':
             # Be aware of the potential for copy mistakes
             self.workspaces.append(self.current_ws)
@@ -93,10 +134,23 @@ class InputReader:
             self.current_ws.add_layout(input)
             self.current_ws_fix.set_attribute("layout", input)
         elif command == '@':
+            extract_time_string(input)
             weekdays_raw = input.split(',')
             weekdays_input = [weekday_raw.strip().lower() for weekday_raw in weekdays_raw]
-            self.current_ws.add_timing([self.weekdays.index(weekday) for weekday in weekdays_input])
-            self.current_ws_fix.set_timing([self.weekdays.index(weekday) for weekday in weekdays_input])
+
+
+
+            # FIXME this should be removed
+            #  self.current_ws.add_timing([self.weekdays.index(weekday) for weekday in weekdays_input])
+
+
+
+            #  self.current_ws_fix.set_timing([self.weekdays.index(weekday) for weekday in weekdays_input])
+
+            weekdays, start_hour, start_minute, end_hour, end_minute = extract_time_string(input)
+            self.current_ws_fix.set_timing(weekdays, start_hour, start_minute, end_hour, end_minute)
+
+
 
         elif command == '-':
             self.current_ws.add_command(input)
@@ -108,6 +162,10 @@ class InputReader:
             # Convert from written list to a list of ints
             focus_str = list(input.split(","))
             self.focus = [int(item) for item in focus_str]
+
+
+
+
 
 class workspace:
     """ A workspace maps to workspaces in i3. Each workspace can have a title,
@@ -162,11 +220,17 @@ layout_file_location = os.path.join(parent, "layouts")
 
 # Initialize and run reader
 reader = InputReader(layout_file_location)
+#FIXME workspaces does not need to be printed like this
 workspaces, focus = reader.read_config(config_file)
+
+# TODO current focus can be a class member of the workspace class
 current_focus =  {"que_number":nan}
 
+
+workspaces_to_launch, workspace_focus_id = w_fix.get_launchable_workspaces()
+
 command_strings = []
-for workspace in w_fix.get_workspaces():
+for workspace in workspaces_to_launch:
     if workspace.should_launch():
         attr = workspace.get_attributes()
         title = attr['title']
@@ -187,48 +251,6 @@ with open(command_file, "w") as output_file:
         for string in command_string:
             output_file.write(string)
 
-e()
-#  TODO test from here
-#  Simple test: Compare the text output from the new and the old versions
-#  with open(command_file, "a") as output_file:
-
-# TODO fix foucs stuff
-
-
-#TODO most of the text bellow can and should be removed
-
-# Find the current day TODO remove
-current_weekday = dt.date.today().weekday()
-
-# Find current time TODO remove
-current_time = dt.datetime.now().time()
-
-
-
-
-
-# Loop through workspaces
-for workspace in workspaces:
-    # Asses if the workspace should be executed today
-    if (current_weekday in workspace.timing):
-        command_strings_2 = i3.get_workspace_i3_commands(workspace.title, workspace.number,
-                                                         workspace.commands, workspace.layout,
-                                                         layout_file_location)
-        with open(command_file, "a") as output_file:
-            for command_string in command_strings_2:
-                output_file.write(command_string)
-
-        # Asses is in the focus que
-        if workspace.number in focus:
-            que_number = focus.index(workspace.number)
-            #Asses if the workspace is first in the focus que
-            if isnan(current_focus['que_number']) | (que_number < current_focus['que_number']):
-               current_focus = {"workspace":workspace, "que_number":que_number}
-
-if current_focus.get('que_number') is not None:
-    with open(command_file, "a") as output_file:
-        focus_command_str = i3.i3_set_focus(current_focus["workspace"])
-        output_file.write(focus_command_str)
-
-
-
+    #  if workspace_focus_id:
+        #  focus_command_str = i3.i3_set_focus()
+        #  output_file.write(focus_command_str)

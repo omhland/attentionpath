@@ -1,4 +1,6 @@
 import datetime as dt
+from IPython import embed as e
+
 class timing_intervals:
     """ A class to handle the timing intervals for a workspace.
     attributes:
@@ -7,7 +9,7 @@ class timing_intervals:
     the start and end times
     """
     interval_days = []
-    def __init__(self, weekdays, start_hour=None, end_hour=None, start_minute=None, end_minute=None):
+    def __init__(self, weekdays, start_hour=None, start_minute=None, end_hour=None, end_minute=None):
         """ Initializes the timing intervals and takes care of the internal
         representations of the time.
         input:
@@ -76,13 +78,15 @@ class timing_intervals:
         if end_minute == None:
             end_minute = MINUTE_UPPER_BOUND
 
+
         if start_hour > end_hour:
             raise ValueError("Upper values must be greater than lower values,\
                             and minutes must be within 0 to 59.")
-        if start_minute > end_minute:
-            raise ValueError("Upper values must be greater than lower values,\
-                             and hours must be within 0 to 23.")
+        if (start_hour == end_hour) and start_minute > end_minute:
+            raise ValueError(f"Start time {start_hour}:{start_minute} must be\
+                            less than end time {end_hour}:{end_minute}")
 
+        # Do the actual setting of the attributes
         self.time_interval= (dt.time(start_hour, start_minute),\
                              dt.time(end_hour, end_minute))
 
