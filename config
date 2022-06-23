@@ -3,7 +3,7 @@
 =1, 2
 {
 # Work panel
-: work_panel
+: work_panel.json
 + 1
 @ monday, tuesday, wednesday, thursday, friday
 -flatpak run com.toggl.TogglDesktop

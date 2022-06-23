@@ -2,10 +2,17 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-python3 ~/attentionPath/config_reader.py
+
+# FIXME Make a good home variable that makes the script invariant of placement
+
+
+# Find name of current directory
+HOME_DIR=pwd 
+
+python3 HOME_DIR/python_src/config_reader.py
 sleep 0.5
 
-input=$HOME"/attentionPath/test.txt"
+input=HOME_DIR/python/bash_output/output_text.txt"
 
 while IFS= read -r line
 do
