@@ -1,4 +1,6 @@
 import os
+
+
 def i3_workspace_string(workspace):
     ws = "workspace " + workspace.number.__str__() + ":" + workspace.title
     return ws
@@ -14,8 +16,7 @@ def i3_msg_creator(commands):
     return i3_msg + "'"
 
 
-def get_workspace_i3_commands(title, number, commands, layout = None,
-                              layout_file_location=None):
+def get_workspace_i3_commands(title, number, commands, layout = None, layout_file_location=None):
     workspace_string = "workspace " + number.__str__() + ":" + title
 
     # Assemble list string commands 
@@ -25,8 +26,7 @@ def get_workspace_i3_commands(title, number, commands, layout = None,
     comment = "#Assembling workspace named " + title
 
     if layout:
-        layout_file_name = layout + ".json"
-        layout_string = i3_msg_creator([workspace_string, "append_layout " + os.path.join(layout_file_location, layout_file_name)])
+        layout_string = i3_msg_creator([workspace_string, "append_layout " + layout])
         command_strings.insert(0, layout_string)
 
 

@@ -1,0 +1,10 @@
+#This script was updated Wed Jul 13 17:02:44 2022 
+
+
+#Assembling workspace named Work panel
+i3-msg 'workspace 13:Work panel; append_layout /home/ole/.config/attentionPath/python_src/../layouts/work_panel.json; '
+i3-msg 'workspace 13:Work panel; exec flatpak run com.toggl.TogglDesktop; '
+i3-msg 'workspace 13:Work panel; exec google-chrome-stable --args --new-window https://freedom.to/dashboard https://www.youtube.com/results?search_query=brown+noise; '
+i3-msg 'workspace 13:Work panel; exec gnome-control-center; '
+i3-msg 'workspace 13:Work panel; exec obs; '
+sleep 1.2

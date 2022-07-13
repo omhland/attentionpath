@@ -97,7 +97,7 @@ class workspace:
         else:
             raise ValueError("number must be numeric")
 
-    def __add_layout(self, file_name):
+    def __add_layout(self, file_name, extension=".json"):
         """ Adds a layout to the workspace.
         """
         if self.attr["layout"] != None:
@@ -105,6 +105,11 @@ class workspace:
 
         if isinstance(file_name, str) == False:
             raise ValueError("layout must be a string")
+
+        # Append file extension if not already present
+        if not file_name.endswith(extension):
+            file_name += extension
+
         # Check if file exists
         if os.path.isfile(file_name) == False:
             error_msg = f"The layout file called {file_name} does not exist"
@@ -231,7 +236,6 @@ class workspace:
                 if ws_number in ws_nums:
                     return workspaces, ws_number
 
-        e()
         return workspaces, None
 
 

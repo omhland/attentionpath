@@ -1,38 +1,64 @@
-" Please use the following config file as a source of inspiration
-
-=1, 2
-
+=2, 3, 4, 11
 {
 # Work panel
-: work_panel.json
-+ 1
-@ monday, tuesday, wednesday, thursday, friday & 07:00-15:00
+: work_panel
++ 13
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday & 05:00-18:00
 -flatpak run com.toggl.TogglDesktop
--google-chrome-stable --args --new-window https://freedom.to/dashboard https://www.youtube.com
+-google-chrome-stable --args --new-window https://freedom.to/dashboard https://www.youtube.com/results?search_query=brown+noise
 -gnome-control-center
 -obs
 }
 
-
 {
-+ 2
++ 11
 # Personal
-@ monday, tuesday, wednesday, thursday, friday, saturday, sunday
+@ monday, tuesday, saturday, sunday & 05:00-15:00
 -google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r
--google-chrome-stable --args --new-window https://todoist.com/app/filter/2321126496
+-google-chrome-stable --args --new-window https://todoist.com/app/filter/2318047362
+-google-chrome-stable --args --new-window https://todoist.com/app/filter/2324968974
 }
 
 {
-# AttentionPath 
-+ 3
-@ monday, tuesday, wednesday, thursday, friday, saturday, sunday
--gnome-terminal -x vim ~/.config/attentionPath/config
++ 11
+# Simple
+@ monday, tuesday, wednesday, thursday, friday & 05:00-15:00
+-google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r
+-google-chrome-stable --args --new-window https://todoist.com/app/filter/2318047362
 }
+
+{
++ 1
+@ monday
+# Review
+-google-chrome-stable --args --new-window https://todoist.com/app/filter/2318400496
+-google-chrome-stable --args --new-window https://track.toggl.com/reports/summary/5666999
+}
+
+
+{
+# Food
++ 1
+@ tuesday
+-google-chrome-stable --args --new-window  https://todoist.com/app/project/2274807471
+}
+
 
 
 {
 # Typing
-+ 4
-@ monday, tuesday, wednesday, thursday, friday
++ 13
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday & 18:00-23:59
+-google-chrome-stable --args --new-window https://www.udemy.com/course/voice-training-develop-a-deeper-voice-in-7-days-or-less/learn/lecture/20034192?start=150#overview
 -google-chrome-stable --args --new-window http://wwwtyro.github.io/keyzen/
 }
+
+{
++ 2
+# GoGo
+@ monday, tuesday, wednesday, thursday, friday & 05:00-15:00
+-exec alacritty -e tmux
+}
+
+" Some old stuff
+" -gnome-terminal -x vim ~/attentionPath/config

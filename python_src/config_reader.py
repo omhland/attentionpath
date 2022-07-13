@@ -1,17 +1,16 @@
 # FIXME BUGS
 # 1. Focus support has not been implemented
-
+#       The i3 focus class takes in a workclass object. That is a bit overkill
+#       and complicates the code. How to simplify?
+# 2. Remove old workspace class
+# 3. Store name of files in the sh file
 
 import datetime as dt
 import os
 from math import isnan, nan
-
 from IPython import embed as e
-
 import i3_interface as i3
-
 from workspace_class import workspace as w_fix
-
 
 def extract_time_string(input):
     """
@@ -54,7 +53,6 @@ def extract_time_string(input):
     return weekdays, start_hour, start_minute, end_hour, end_minute
 
 
-
 class InputReader:
     """
     The InputReader class is used to read the input from the user.
@@ -70,6 +68,7 @@ class InputReader:
                 layout_path: the path to the layouts
         """
         self.layout_path = layout_path
+        # FIXME workspaces can be removed from here
         self.workspaces = []
         self.num_workspaces = 0
         self.focus = float("nan")
@@ -164,9 +163,6 @@ class InputReader:
             self.focus = [int(item) for item in focus_str]
 
 
-
-
-
 class workspace:
     """ A workspace maps to workspaces in i3. Each workspace can have a title,
     a number, a list of commands, a layout. The workspace will also contain
@@ -242,7 +238,7 @@ for workspace in workspaces_to_launch:
                                                             layout_file_location))
 
 # Find file for bash commands
-command_file = os.path.join(output_path, "JUNE2022_test.txt")
+command_file = os.path.join(output_path, "output_text.txt")
 with open(command_file, "w") as output_file:
     output_file.write(f'#This script was updated '
                       f'{dt.datetime.now().ctime()} \n\n')

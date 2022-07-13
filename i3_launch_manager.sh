@@ -9,10 +9,10 @@ IFS=$'\n\t'
 # Find name of current directory
 HOME_DIR=pwd 
 
-python3 HOME_DIR/python_src/config_reader.py
+python3 python_src/config_reader.py
 sleep 0.5
 
-input=HOME_DIR/python/bash_output/output_text.txt"
+input=python_src/bash_output/output_text.txt
 
 while IFS= read -r line
 do
