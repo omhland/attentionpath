@@ -2,7 +2,7 @@
 {
 # Work panel
 : work_panel
-+ 13
++ 0
 @ monday, tuesday, wednesday, thursday, friday, saturday, sunday & 05:00-18:00
 -flatpak run com.toggl.TogglDesktop
 -google-chrome-stable --args --new-window https://freedom.to/dashboard https://www.youtube.com/results?search_query=brown+noise
@@ -11,9 +11,9 @@
 }
 
 {
-+ 11
++ 12
 # Personal
-@ monday, tuesday, saturday, sunday & 05:00-15:00
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday & 05:00-18:00
 -google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r
 -google-chrome-stable --args --new-window https://todoist.com/app/filter/2318047362
 -google-chrome-stable --args --new-window https://todoist.com/app/filter/2324968974
@@ -21,10 +21,10 @@
 
 {
 + 11
-# Simple
-@ monday, tuesday, wednesday, thursday, friday & 05:00-15:00
--google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r
--google-chrome-stable --args --new-window https://todoist.com/app/filter/2318047362
+# Prime
+@ monday, tuesday, wednesday, thursday, friday & 05:00-13:00
+-google-chrome-stable --args --new-window https://teams.microsoft.com https://outlook.office.com/mail/?actSwt=true
+-google-chrome-stable --args --new-window https://outlook.office.com/calendar/view/month?actSwt=true
 }
 
 {
@@ -35,16 +35,21 @@
 -google-chrome-stable --args --new-window https://track.toggl.com/reports/summary/5666999
 }
 
-
 {
 # Food
 + 1
-@ tuesday
--google-chrome-stable --args --new-window  https://todoist.com/app/project/2274807471
+@ tuesday, wednesday
+-google-chrome-stable --args --new-window  https://todoist.com/app/project/2279729732
+-google-chrome-stable --args --new-window  https://todoist.com/app/filter/2322233221
 }
 
-
-
+{
+# Learning
++ 9
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday
+-google-chrome-stable --args --new-window https://www.duolingo.com/learn
+-anki
+}
 {
 # Typing
 + 13

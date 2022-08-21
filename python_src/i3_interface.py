@@ -32,7 +32,9 @@ def get_workspace_i3_commands(title, number, commands, layout = None, layout_fil
 
     # Add a sleep timer – this is required because i3 require some extra time for waiting between window lanuchers.
     # Future – add in extra sleep timing based on amount or windows, or similar. 
-    i3_sleep_time = 1.2
+
+    # TODO maybe multiply based on number of windows in workspace?
+    i3_sleep_time = 2
     i3_sleep_string = "sleep " + i3_sleep_time.__str__()
 
     #Include comment and timer
