@@ -1,37 +1,69 @@
-" Please use the following config file as a source of inspiration
-
-=1, 2
+=2, 3, 4, 11
 {
 # Work panel
 : work_panel
-+ 1
-@ monday, tuesday, wednesday, thursday, friday
++ 0
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday & 05:00-18:00
 -flatpak run com.toggl.TogglDesktop
--google-chrome-stable --args --new-window https://freedom.to/dashboard https://www.youtube.com
+-google-chrome-stable --args --new-window https://freedom.to/dashboard https://www.youtube.com/results?search_query=brown+noise
 -gnome-control-center
 -obs
 }
 
+{
++ 12
+# Personal
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday & 05:00-18:00
+-google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r
+-google-chrome-stable --args --new-window https://todoist.com/app/filter/2318047362
+-google-chrome-stable --args --new-window https://todoist.com/app/filter/2324968974
+}
+
+{
++ 11
+# Prime
+@ monday, tuesday, wednesday, thursday, friday & 05:00-13:00
+-google-chrome-stable --args --new-window https://teams.microsoft.com https://outlook.office.com/mail/?actSwt=true
+-google-chrome-stable --args --new-window https://outlook.office.com/calendar/view/month?actSwt=true
+}
+
+{
++ 1
+@ monday
+# Review
+-google-chrome-stable --args --new-window https://todoist.com/app/filter/2318400496
+-google-chrome-stable --args --new-window https://track.toggl.com/reports/summary/5666999
+}
+
+{
+# Food
++ 1
+@ tuesday, wednesday
+-google-chrome-stable --args --new-window  https://todoist.com/app/project/2279729732
+-google-chrome-stable --args --new-window  https://todoist.com/app/filter/2322233221
+}
+
+{
+# Learning
++ 9
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday
+-google-chrome-stable --args --new-window https://www.duolingo.com/learn
+-anki
+}
+{
+# Typing
++ 13
+@ monday, tuesday, wednesday, thursday, friday, saturday, sunday & 18:00-23:59
+-google-chrome-stable --args --new-window https://www.udemy.com/course/voice-training-develop-a-deeper-voice-in-7-days-or-less/learn/lecture/20034192?start=150#overview
+-google-chrome-stable --args --new-window http://wwwtyro.github.io/keyzen/
+}
 
 {
 + 2
-# Personal
-@ monday, tuesday, wednesday, thursday, friday, saturday, sunday
--google-chrome-stable --args --new-window https://calendar.google.com/calendar/u/0/r
--google-chrome-stable --args --new-window https://todoist.com/app/filter/2321126496
+# GoGo
+@ monday, tuesday, wednesday, thursday, friday & 05:00-15:00
+-exec alacritty -e tmux
 }
 
-{
-# AttentionPath 
-+ 3
-@ monday, tuesday, wednesday, thursday, friday, saturday, sunday
--gnome-terminal -x vim ~/.config/attentionPath/config
-}
-
-
-{
-# Typing
-+ 4
-@ monday, tuesday, wednesday, thursday, friday
--google-chrome-stable --args --new-window http://wwwtyro.github.io/keyzen/
-}
+" Some old stuff
+" -gnome-terminal -x vim ~/attentionPath/config
